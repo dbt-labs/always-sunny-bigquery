@@ -1,0 +1,31 @@
+name: always_sunny_bigquery
+
+config-version: 2
+version: "0.1.0"
+
+profile: always-sunny-bigquery
+
+model-paths: [models]
+seed-paths: [seeds]
+test-paths: [tests]
+macro-paths: [macros]
+snapshot-paths: [snapshots]
+docs-paths: [docs]
+
+packages-install-path: dbt_packages
+target-path: target
+
+clean-targets:
+-   dbt_packages
+-   target
+-   logs
+
+query-comment:
+    comment: "project:always-sunny-bigquery, user:{{ target.user }}"
+    job-label: true
+
+require-dbt-version: ">=1.9.0"
+
+seeds:
+    always_sunny_bigquery:
+        +schema: always_sunny_sources
